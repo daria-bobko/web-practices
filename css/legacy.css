@@ -1,0 +1,245 @@
+/*
+  legacy.css — стилі лендингу з hardcoded значеннями.
+  Завдання 3: рефакторинг через CSS-змінні + темна тема.
+
+  Студент має:
+  1. Виділити дизайн-токени в :root (≥ 10 змінних).
+  2. Замінити hardcoded значення на var(--name).
+  3. Додати [data-theme="dark"] перевизначення для темної теми.
+  4. Перевірити, що нічого не зламалось у світлій темі.
+*/
+:root {
+  --color-bg: #ffffff ;
+  --surface-color: #2050a0;
+  --text: #1a1a1a;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --border-radius: 2px;
+  --text-size: 14px;
+}
+[data-theme="dark"] {
+  --color-bg: #111111;
+  --text: #eeeeee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--color-bg);
+}
+
+/* === Header === */
+.site-header {
+  background: var(--surface-color);
+  color: var(--color-bg);
+  padding: var(--space-sm) var(--space-lg);
+  border-bottom: 1px solid #1a3f80;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 20px;
+  color: var(--color-bg);
+}
+
+.site-header nav a {
+  color: var(--color-bg);
+  text-decoration: none;
+  margin-left: var(--space-sm);
+  font-size: var(--text-size);
+}
+
+.site-header nav a:hover {
+  color: #ffcc44;
+}
+
+/* === Hero === */
+.hero {
+  background: #f4f6f8;
+  padding: 64px var(--space-lg);
+  text-align: center;
+  color: var(--text);
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin: 0 0 var(--space-sm);
+  color: var(--surface-color);
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto var(--space-lg);
+  color: #555555;
+}
+
+.hero .cta {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  background: var(--surface-color);
+  color: var(--color-bg);
+  border-radius: calc(var(--border-radius)*3);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--space-sm);
+}
+
+.hero .cta:hover {
+  background: #173e7c;
+}
+
+/* === Features === */
+.features {
+  padding: 48px var(--space-lg);
+  background: var(--color-bg);
+}
+
+.features h2 {
+  text-align: center;
+  font-size: 28px;
+  margin: 0 0 var(--space-lg);
+  color: var(--surface-color);
+}
+
+.features .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: var(--color-bg);
+  border: 1px solid #e1e4e8;
+  border-radius: calc(var(--border-radius)*4);
+  padding: var(--space-md);
+  color: var(--text);
+}
+
+.feature-card h3 {
+  margin: 0 0 var(--space-xs);
+  color: var(--surface-color);
+  font-size: 18px;
+}
+
+.feature-card p {
+  margin: 0;
+  color: #555555;
+  font-size: var(--text-size);
+}
+
+/* === Alert === */
+.alert {
+  padding: var(--space-xs) var(--space-sm);
+  background: #fff7e6;
+  color: #b85c00;
+  border-left: 4px solid #b85c00;
+  border-radius: calc(var(--border-radius)*2);
+  margin: var(--space-sm) 0;
+  font-size: var(--text-size);
+}
+
+.alert-info {
+  background: #e8f0fe;
+  color: var(--surface-color);
+  border-left-color: var(--surface-color);
+}
+
+.alert-success {
+  background: #e6f7eb;
+  color: #2a8a4a;
+  border-left-color: #2a8a4a;
+}
+
+/* === Form === */
+.contact-form {
+  max-width: 480px;
+  margin: 48px auto;
+  padding: var(--space-lg);
+  background: #f4f6f8;
+  border-radius: calc(var(--border-radius)*4);
+}
+
+.contact-form h2 {
+  margin: 0 0 var(--space-md);
+  color: var(--surface-color);
+  font-size: 24px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: var(--text-size);
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px var(--space-xs);
+  border: 1px solid #e1e4e8;
+  border-radius: calc(var(--border-radius)*3);
+  font-size: var(--text-size);
+  background: var(--color-bg);
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--surface-color);
+  outline-offset: 1px;
+}
+
+.contact-form button {
+  background: var(--surface-color);
+  color: var(--color-bg);
+  padding: var(--space-xs) var(--space-md);
+  border: none;
+  border-radius: calc(var(--border-radius)*3);
+  font-size: var(--space-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #173e7c;
+}
+
+/* === Footer === */
+.site-footer {
+  background: var(--text);
+  color: #cccccc;
+  padding: var(--space-lg);
+  text-align: center;
+  font-size: var(--text-size);
+}
+
+.site-footer a {
+  color: var(--color-bg);
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.site-footer a:hover {
+  color: #ffcc44;
+}
+
+@media(prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #111111;
+    --text: #eeeeee;
+  }
+}
